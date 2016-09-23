@@ -1,19 +1,18 @@
-
- var config = {
+var config = {
     apiKey: "AIzaSyAAPUqX96enkFQCZimIjts2774_RBefPjA",
     authDomain: "trainschedule-8d5d1.firebaseapp.com",
     databaseURL: "https://trainschedule-8d5d1.firebaseio.com",
     storageBucket: "trainschedule-8d5d1.appspot.com",
-    // messagingSenderId: "894281085076"
-  };
-  firebase.initializeApp(config);
+    messagingSenderId: "894281085076"
+};
+firebase.initializeApp(config);
 
-  var database = firebase.database();
+var database = firebase.database();
 
-  $(document).ready(function() {
+$(document).ready(function() {
 
 
-  $("#addTrainBtn").on("click", function(){
+    $("#addTrainBtn").on("click", function() {
 
         var trainName = $("#nameInput").val().trim();
         var trainDestination = $("#destinInput").val().trim();
@@ -21,10 +20,10 @@
         var trainFrequency = $("#FreqInput").val().trim();
 
         var addNew = {
-              name: trainName,
-              destination: trainDestination,
-              time: trainTime,
-              frequency: trainFrequency
+            name: trainName,
+            destination: trainDestination,
+            time: trainTime,
+            frequency: trainFrequency
         }
 
         database.ref().push(addNew);
@@ -43,9 +42,9 @@
         $("#FreqInput").val("");
 
         return false;
-  });
+    });
 
-  database.ref().on("child_added", function(childSnapshot, prevChildKey){
+    database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
         console.log(childSnapshot.val());
 
@@ -60,5 +59,5 @@
 
         $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainTime + "</td><td>" + trainFrequency + "</td><td>");
 
-  });
+    });
 });
