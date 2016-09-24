@@ -5,6 +5,7 @@ var config = {
     storageBucket: "trainschedule-8d5d1.appspot.com",
     messagingSenderId: "894281085076"
 };
+
 firebase.initializeApp(config);
 
 var database = firebase.database();
